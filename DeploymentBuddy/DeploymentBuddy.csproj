@@ -1,0 +1,207 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{5FF2901A-5FE9-4492-A36C-0C919692408F}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>DeploymentBuddy</RootNamespace>
+    <AssemblyName>DeploymentBuddy</AssemblyName>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Package.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DotNetZip, Version=1.10.1.0, Culture=neutral, PublicKeyToken=6583c7c814667745, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotNetZip.1.10.1\lib\net20\DotNetZip.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.ValueTuple, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.4.0\lib\net47\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Dashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dashboard.Designer.cs">
+      <DependentUpon>Dashboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\ApplicationConfigurations.cs" />
+    <Compile Include="Entities\DeploymentFolderManager.cs" />
+    <Compile Include="Entities\PackageBuilder.cs" />
+    <Compile Include="ApplicationEvents\ProjectVersionChangedArg.cs" />
+    <Compile Include="IconResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>IconResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Serializers.cs" />
+    <Compile Include="Singleton.cs" />
+    <Compile Include="SupportForms\ProjectVersionsEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SupportForms\ProjectVersionsEditor.Designer.cs">
+      <DependentUpon>ProjectVersionsEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TabControls\DeploymentFoldersManager\DeploymentFolderManagerEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TabControls\DeploymentFoldersManager\DeploymentFolderManagerEditor.Designer.cs">
+      <DependentUpon>DeploymentFolderManagerEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TabControls\DeploymentFoldersManager\DeploymentFolderManagerInstance.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TabControls\DeploymentFoldersManager\DeploymentFolderManagerInstance.Designer.cs">
+      <DependentUpon>DeploymentFolderManagerInstance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TabControls\DeploymentFoldersManager\DeploymentFoldersManager.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TabControls\DeploymentFoldersManager\DeploymentFoldersManager.Designer.cs">
+      <DependentUpon>DeploymentFoldersManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TabControls\PackageBuilder\PackageBuilder.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TabControls\PackageBuilder\PackageBuilder.Designer.cs">
+      <DependentUpon>PackageBuilder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TabControls\PackageBuilder\PackageBuilderEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TabControls\PackageBuilder\PackageBuilderEditor.Designer.cs">
+      <DependentUpon>PackageBuilderEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TabControls\PackageBuilder\PackageBuilderInstance.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TabControls\PackageBuilder\PackageBuilderInstance.Designer.cs">
+      <DependentUpon>PackageBuilderInstance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utilities.cs" />
+    <EmbeddedResource Include="Dashboard.resx">
+      <DependentUpon>Dashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IconResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>IconResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="SupportForms\ProjectVersionsEditor.resx">
+      <DependentUpon>ProjectVersionsEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TabControls\DeploymentFoldersManager\DeploymentFolderManagerEditor.resx">
+      <DependentUpon>DeploymentFolderManagerEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TabControls\DeploymentFoldersManager\DeploymentFolderManagerInstance.resx">
+      <DependentUpon>DeploymentFolderManagerInstance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TabControls\DeploymentFoldersManager\DeploymentFoldersManager.resx">
+      <DependentUpon>DeploymentFoldersManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TabControls\PackageBuilder\PackageBuilder.resx">
+      <DependentUpon>PackageBuilder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TabControls\PackageBuilder\PackageBuilderEditor.resx">
+      <DependentUpon>PackageBuilderEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TabControls\PackageBuilder\PackageBuilderInstance.resx">
+      <DependentUpon>PackageBuilderInstance.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\folder24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\save24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cancel24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\save48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cancel48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\package32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\info32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\settings24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\edit24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Package.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
